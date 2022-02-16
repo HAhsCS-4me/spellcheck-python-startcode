@@ -16,19 +16,20 @@ def main():
     print(aliceWords[0:50])
 
     selection = getSelection()
+    word = spellCheck()
 
     loop = True
     while loop:
         if selection == '1':
-            linearSpell(dictionary)
-        #elif selection == '2':
-            #binarySpell(dictionary)
-        #elif selection == '3':
-        #    x = 1
-        #elif selection == '4':
-        #    x = 2
-        #elif selection == '5':
-        #    loop = False
+            linearSearch(dictionary, word)
+        elif selection == '2':
+            binarySearch(dictionary, word)
+        elif selection == '3':
+            linearSearch(aliceWords)    
+        elif selection == '4':
+            binarySearch(aliceWords)
+        elif selection == '5':
+            loop = False
 # end main()
 
 def getSelection():
@@ -40,8 +41,7 @@ def getSelection():
     print('5: Exit')
 
     return input('Enter menu selection (1-5): ')
-    return input('')
-
+# end of getSelection()
 
 def loadWordsFromFile(fileName):
     # Read file as a string
@@ -53,10 +53,32 @@ def loadWordsFromFile(fileName):
     return re.split('\s+', textData)
 # end loadWordsFromFile()
 
-def linearSpell(array):
-    
-#def binarySpell():
+# Get desired word
+def spellCheck():
+    return input('Please enter a word: ')
 
+# Linear Searches
+# def linearSearch(array, item):
+    
+# end of linearSearch()
+
+# Binary Searches
+def binarySearch(array, item):
+    ui = len(array) - 1
+    li = 0
+
+    i = 0
+    while i < len(array):
+        mi = int(((ui + li) / 2))
+        if item == array[mi]:
+            return mi
+        elif item < array[mi]:
+            ui = mi - 1
+        elif item > array[mi]:
+            li = mi + 1
+        i += 1
+    return -1
+# end of binarySearch()
 
 # Call main() to begin program
 main()
