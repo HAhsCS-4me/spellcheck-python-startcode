@@ -20,16 +20,16 @@ def main():
         selection, word = getSelection()
         if selection == '1':
             option1 = linearSearch(dictionary, word)
-            output(option1, word)
+            sel1And2(option1, word)
         elif selection == '2':
             option2 = binarySearch(dictionary, word)
-            output(option2, word)
+            sel1And2(option2, word)
         elif selection == '3':
-            option3 = linearSearch(aliceWords)
-            output(option3, word)    
+            option3 = linearSearch(dictionary, aliceWords)
+            sel3And4(option3, word)    
         elif selection == '4':
-            option4 = binarySearch(aliceWords)
-            output(option4, word)
+            option4 = binarySearch(dictionary, aliceWords)
+            sel3And4(option4, word)
         elif selection == '5':
             loop = False
 # end main()
@@ -64,7 +64,7 @@ def linearSearch(anArray, item):
         if anArray[i] == item:
             return i
     return -1 
-#end of linearSearch()
+# end of linearSearch()
 
 # Binary Searches
 def binarySearch(anArray, item):
@@ -82,12 +82,18 @@ def binarySearch(anArray, item):
     return -1
 # end of binarySearch()
 
-# Output
-def output(option, word):
+# Output for selections 1 and 2
+def sel1And2(option, word):
     if option >= 0:
         print(f'{word} is IN the dictionary position {option}')
     else:
         print(f'{word} is NOT IN the dictionary')
+# end of selOneAndTwo()
+
+# Output for selections 3 and 4
+def sel3And4():
+    x = 2
+# end of sel3And4()
 
 # Call main() to begin program
 main()
