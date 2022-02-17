@@ -19,15 +19,21 @@ def main():
     while loop:
         selection, word = getSelection()
         if selection == '1':
-            s = 'hery'
-            #linearSearch(dictionary, word)
+            optOne = linearSearch(dictionary, word)
+            if optOne >= 0:
+                print(f'{word} is IN the dictionary position {optOne}')
+            else:
+                print(f'{word} is NOT IN the dictionary')
         elif selection == '2':
-            binarySearch(dictionary, word)
+            optTwo = binarySearch(dictionary, word)
+            if optTwo >= 0:
+                print(f'{word} is IN the dictionary position {optTwo}')
+            else:
+                print(f'{word} is NOT IN the dictionary')
         elif selection == '3':
-            b = 'jem'
-            #linearSearch(aliceWords)    
+            linearSearch(aliceWords)    
         elif selection == '4':
-            binarySearch(aliceWords, word)
+            binarySearch(aliceWords)
         elif selection == '5':
             loop = False
 # end main()
@@ -43,7 +49,7 @@ def getSelection():
     selection = input('Enter menu selection (1-5): ')
     word = input('Please enter a word: ')
     
-    return selection, word
+    return selection, word.lower()
 # end of getSelection()
 
 def loadWordsFromFile(fileName):
@@ -58,27 +64,30 @@ def loadWordsFromFile(fileName):
 
 # Linear Searches
 def linearSearch(anArray, item):
-    for x in range(0, len(anArray)):
-        if anArray[x] == item:
-            return x
+    for i in range(len(anArray)):
+        if anArray[i] == item:
+            return i
     return -1 
 #end of linearSearch()
 
 # Binary Searches
-def binarySearch(array, item):
-    ui = len(array) - 1
+def binarySearch(anArray, item):
+    ui = len(anArray) - 1
     li = 0
 
     while ui >= li:
         mi = (ui + li) // 2
-        if item == array[mi]:
+        if item == anArray[mi]:
             return mi
-        elif item < array[mi]:
+        elif item < anArray[mi]:
             ui = mi - 1
         else:
             li = mi + 1
     return -1
 # end of binarySearch()
+
+# Output
+
 
 # Call main() to begin program
 main()
