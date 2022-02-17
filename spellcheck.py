@@ -19,21 +19,17 @@ def main():
     while loop:
         selection, word = getSelection()
         if selection == '1':
-            optOne = linearSearch(dictionary, word)
-            if optOne >= 0:
-                print(f'{word} is IN the dictionary position {optOne}')
-            else:
-                print(f'{word} is NOT IN the dictionary')
+            option1 = linearSearch(dictionary, word)
+            output(option1, word)
         elif selection == '2':
-            optTwo = binarySearch(dictionary, word)
-            if optTwo >= 0:
-                print(f'{word} is IN the dictionary position {optTwo}')
-            else:
-                print(f'{word} is NOT IN the dictionary')
+            option2 = binarySearch(dictionary, word)
+            output(option2, word)
         elif selection == '3':
-            linearSearch(aliceWords)    
+            option3 = linearSearch(aliceWords)
+            output(option3, word)    
         elif selection == '4':
-            binarySearch(aliceWords)
+            option4 = binarySearch(aliceWords)
+            output(option4, word)
         elif selection == '5':
             loop = False
 # end main()
@@ -87,7 +83,11 @@ def binarySearch(anArray, item):
 # end of binarySearch()
 
 # Output
-
+def output(option, word):
+    if option >= 0:
+        print(f'{word} is IN the dictionary position {option}')
+    else:
+        print(f'{word} is NOT IN the dictionary')
 
 # Call main() to begin program
 main()
