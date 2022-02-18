@@ -17,19 +17,21 @@ def main():
 
     loop = True
     while loop:
-        selection, word = getSelection()
+        selection = getSelection()
         if selection == '1':
-            option1 = linearSearch(dictionary, word)
+            word = input('Please enter a word: ')
+            option1 = linearSearch(dictionary, word.lower())
             sel1And2(option1, word)
         elif selection == '2':
-            option2 = binarySearch(dictionary, word)
+            word = input('Please enter a word: ')
+            option2 = binarySearch(dictionary, word.lower())
             sel1And2(option2, word)
         elif selection == '3':
             option3 = linearSearch(dictionary, aliceWords)
-            sel3And4(option3, word)    
+            sel3And4(option3)    
         elif selection == '4':
             option4 = binarySearch(dictionary, aliceWords)
-            sel3And4(option4, word)
+            sel3And4(option4)
         elif selection == '5':
             loop = False
 # end main()
@@ -43,9 +45,7 @@ def getSelection():
     print('5: Exit')
 
     selection = input('Enter menu selection (1-5): ')
-    word = input('Please enter a word: ')
-    
-    return selection, word.lower()
+    return selection
 # end of getSelection()
 
 def loadWordsFromFile(fileName):
@@ -91,8 +91,11 @@ def sel1And2(option, word):
 # end of selOneAndTwo()
 
 # Output for selections 3 and 4
-def sel3And4():
-    x = 2
+def sel3And4(option):
+    x = 0
+    if option < 0:
+        x += 1
+    print(f'There are {x} words in Alice in Wonderland that are NOT found in the dictionary')
 # end of sel3And4()
 
 # Call main() to begin program
