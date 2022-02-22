@@ -4,7 +4,6 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
-import timeit 
 
 def main():
     # Load data files into lists
@@ -15,25 +14,26 @@ def main():
     print(dictionary[0:50])
     print(aliceWords[0:50])
 
+    unfound = 0
+
     loop = True
     while loop:
         selection = getSelection()
         if selection == '1':
             word = input('Please enter a word: ')
-            startTime = timeit.timeit()
+            #startTime = timeit.timeit()
             option1 = linearSearch(dictionary, word.lower())
             sel1And2(option1, word)
-            endTime = timeit.timeit()
-            print(endTime - startTime)
+            #endTime = timeit.timeit()
+            #print(endTime - startTime)
         elif selection == '2':
             word = input('Please enter a word: ')
             option2 = binarySearch(dictionary, word.lower())
-
             sel1And2(option2, word)
         elif selection == '3':       
             for i in range(len(aliceWords)):
                 option3 = linearSearch(dictionary, aliceWords[i])
-                sel3And4(option3)    
+                sel3And4(option3, unfound)    
         elif selection == '4':
             option4 = binarySearch(dictionary, aliceWords)
             sel3And4(option4)
@@ -96,10 +96,10 @@ def sel1And2(option, word):
 # end of selOneAndTwo()
 
 # Output for selections 3 and 4
-def sel3And4(option):
-    y = 0
-    if option == -1:
-        y += 1
+def sel3And4(option, unfound):
+    if option < 0:
+        unfound += 1
+    
 # end of sel3And4()
 
 # Call main() to begin program
