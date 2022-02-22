@@ -13,7 +13,7 @@ Python start code for Spell Check Assignment
 - Search the contents of the dictionary, using the search algorithm specified by the user, for each of the words from the Alice in Wonderland story.
 - Output to the page a total count of all the words that were not found in the dictionary and how long it took to check all of the words.
 
-# Sample
+# Sample 1
 Main Menu
 1: Spell Check a Word (Linear Search)
 2: Spell Check a Word (Binary Search)
@@ -22,6 +22,21 @@ Main Menu
 5: Exit
 Enter menu selection (1-5): 1
 Please enter a word: hello
+
+Linear Search starting...
+hello is IN the dictionary at position 32019. (0.0029914379119873047 seconds)
+
+# Sample 2
+Main Menu
+1: Spell Check a Word (Linear Search)
+2: Spell Check a Word (Binary Search)
+3: Spell Check Alice In Wonderland (Linear Search)
+4: Spell Check Alice In Wonderland (Binary Search)
+5: Exit
+Enter menu selection (1-5): 4
+
+Binary Search starting...
+Number of words not found in dictionary: 7082 (0.35611438751220703 seconds)
 
 # Tips: Lowercase
 The dictionary is all lowercase, so the user entered words and the words from Alice in Wonderland should be converted to lowercase before you check if they are in the dictionary or not.
