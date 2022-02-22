@@ -4,7 +4,7 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
-import timeit
+import timeit 
 
 def main():
     # Load data files into lists
