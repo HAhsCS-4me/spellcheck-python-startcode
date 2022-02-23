@@ -4,6 +4,7 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
+import time
 
 def main():
     # Load data files into lists
@@ -14,7 +15,8 @@ def main():
     print(dictionary[0:50])
     print(aliceWords[0:50])
 
-    y = 0
+    # Starting time
+    startTime = time.perf_counter()
 
     loop = True
     while loop:
@@ -22,21 +24,30 @@ def main():
         if selection == '1':
             word = input('Please enter a word: ')
             option1 = linearSearch(dictionary, word.lower())
-            sel1And2(option1, word)
+            # Ending time
+            endTime = time.perf_counter()
+            # Time elapsed
+            timeElapse = endTime - startTime
+            sel1And2(option1, word, timeElapse)
         elif selection == '2':
             word = input('Please enter a word: ')
             option2 = binarySearch(dictionary, word.lower())
             sel1And2(option2, word)
         # Womk
-        elif selection == '3':       
+        elif selection == '3':
+            nonwords = 0       
             for i in range(len(aliceWords)):
                 option3 = linearSearch(dictionary, aliceWords[i].lower())
                 if option3 < 0:
-                    y += 1
-                sel3And4(y)
+                    nonwords += 1
+            print(f'Number of words not found in dictionary: {nonwords}')
         elif selection == '4':
-            option4 = binarySearch(dictionary, aliceWords)
-            sel3And4(option4)
+            nonwords = 0       
+            for i in range(len(aliceWords)):
+                option3 = binarySearch(dictionary, aliceWords[i].lower())
+                if option3 < 0:
+                    nonwords += 1
+            print(f'Number of words not found in dictionary: {nonwords}')
         elif selection == '5':
             loop = False
 # end main()
@@ -87,23 +98,13 @@ def binarySearch(anArray, item):
     return -1
 # end of binarySearch()
 
-#def option(aliceWords):
-#    for i in range(len(aliceWords)):
-#        return i
-
 # Output for selections 1 and 2
-def sel1And2(option, word):
+def sel1And2(option, word, time):
     if option >= 0:
-        print(f'{word} is IN the dictionary position {option}')
+        print(f'{word} is IN the dictionary position {option} ({time} seconds).')
     else:
-        print(f'{word} is NOT IN the dictionary')
+        print(f'{word} is NOT IN the dictionary ({time} seconds)')
 # end of selOneAndTwo()
-
-# Output for selections 3 and 4
-def sel3And4(nonwords):
-    print(nonwords)
-    
-# end of sel3And4()
 
 # Call main() to begin program
 main()
