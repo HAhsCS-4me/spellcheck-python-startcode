@@ -15,14 +15,13 @@ def main():
     print(dictionary[0:50])
     print(aliceWords[0:50])
 
-    # Starting time
-    startTime = time.perf_counter()
-
     loop = True
     while loop:
         selection = getSelection()
         if selection == '1':
             word = input('Please enter a word: ')
+            # Starting time
+            startTime = time.perf_counter()
             option1 = linearSearch(dictionary, word.lower())
             # Ending time
             endTime = time.perf_counter()
@@ -31,23 +30,41 @@ def main():
             sel1And2(option1, word, timeElapse)
         elif selection == '2':
             word = input('Please enter a word: ')
+            # Starting time
+            startTime = time.perf_counter()
             option2 = binarySearch(dictionary, word.lower())
+            # Ending time
+            endTime = time.perf_counter()
+            # Time elapsed
+            timeElapse = endTime - startTime
             sel1And2(option2, word)
         # Womk
         elif selection == '3':
-            nonwords = 0       
+            nonwords = 0  
+            # Starting time
+            startTime = time.perf_counter()
             for i in range(len(aliceWords)):
                 option3 = linearSearch(dictionary, aliceWords[i].lower())
                 if option3 < 0:
                     nonwords += 1
-            print(f'Number of words not found in dictionary: {nonwords}')
+            # Ending time
+            endTime = time.perf_counter()
+            # Time elapsed
+            timeElapse = endTime - startTime
+            print(f'Number of words not found in dictionary: {nonwords} ({timeElapse} seconds).')
         elif selection == '4':
-            nonwords = 0       
+            nonwords = 0 
+            # Starting time
+            startTime = time.perf_counter()      
             for i in range(len(aliceWords)):
                 option3 = binarySearch(dictionary, aliceWords[i].lower())
                 if option3 < 0:
                     nonwords += 1
-            print(f'Number of words not found in dictionary: {nonwords}')
+            # Ending time
+            endTime = time.perf_counter()
+            # Time elapsed
+            timeElapse = endTime - startTime
+            print(f'Number of words not found in dictionary: {nonwords} ({timeElapse} seconds).')
         elif selection == '5':
             loop = False
 # end main()
