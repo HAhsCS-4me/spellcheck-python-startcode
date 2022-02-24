@@ -37,7 +37,7 @@ def main():
             endTime = time.perf_counter()
             # Time elapsed
             timeElapse = endTime - startTime
-            sel1And2(option2, word)
+            sel1And2(option2, word, timeElapse)
         # Womk
         elif selection == '3':
             nonwords = 0  
